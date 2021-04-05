@@ -1,0 +1,4 @@
+﻿OBSERVAÇÕES
+
+Backup do Banco de dados, na pasta Data Base
+Não esqueça de trocar o usuário da string de conexão no Web.config
