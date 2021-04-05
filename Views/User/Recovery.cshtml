@@ -1,0 +1,33 @@
+﻿@model MyTasks.Models.EmailModel
+@{
+    ViewBag.Title = "Recuperar Senha";
+    Layout = "~/Views/Shared/All_Layout.cshtml";
+}
+<h2 class="text-primary">Recuperar Senha</h2>
+<hr />
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submeter" class="btn btn-primary" />
+                </div>
+            </div>
+            <div class="text-danger">@ViewBag.Message</div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

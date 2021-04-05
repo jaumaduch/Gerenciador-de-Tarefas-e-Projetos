@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MyTasks.Models.Task>
+
+<table class="table table-bordered ">
+    <tr class="btn-danger">
+        <th>
+            Projeto
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Importance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.Title)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @item.AddedOn.Value.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+           @item.DueDateString
+                   
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImportanceString)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusString)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Id } , new { onclick = "return confirm('Deseja deletar esta tarefa ?')" } )
+        </td>
+    </tr>
+}
+
+</table>

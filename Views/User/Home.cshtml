@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MyTasks.Models.Project>
+
+@{
+    ViewBag.Title = "Projetos";
+}
+<h2 class="text-primary">Projetos</h2>
+@using (Html.BeginForm("Add","Project", FormMethod.Post))
+{   
+    <span class="text-danger"> @TempData["message"]</span>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-12">
+                    <input type="text" name="title" required placeholder="Título do Projeto" />
+                    <input type="submit" value="Adicionar Projeto" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+}
+ @foreach (var project in Model)
+ {
+     <div class="panel panel-primary">
+         <div class="panel-body">
+             <span class="lead">@project.Title</span>
+             <div class="text-success">
+                  Criado em  :  @project.CreatedOn
+             </div>
+             <div class="text-info">
+                 No. de tarefas :  <span class="badge">@project.Tasks.Count() </span>
+             </div>
+             @Html.ActionLink("Deletar", "Delete", "Project", new { Id = @project.Id }, 
+                                   new { onclick="return confirm('Deseja deletar este projeto e suas tarefas ?')"})
+             | 
+             @Html.ActionLink("Editar", "Edit", "Project", new { Id = @project.Id }, null) 
+             |
+             @Html.ActionLink("Listar Tarefas", "List", "Task", new { Id = @project.Id }, null)
+             |
+             @Html.ActionLink("Adicionar Tarefa", "Add", "Task", new { Id = @project.Id }, null)
+         </div>
+       
+     </div>
+ }
+

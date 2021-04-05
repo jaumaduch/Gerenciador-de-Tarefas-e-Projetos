@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MyTasks.Models.Task>
+
+@{
+    ViewBag.Title = "Tarefas";
+}
+
+<h2 class="text-primary">Tarefas de  [@ViewBag.ProjectTitle]</h2>
+
+ @Html.ActionLink("Adicionar Tarefa", "Add", "Task", new { Id = ViewContext.RouteData.Values["id"] }, null)
+
+ <p></p>
+ @foreach (var task in Model)
+ {
+     <div class="panel panel-primary">
+         <div class="panel-body">
+             <span class="lead">@task.Title</span>
+             <div class="text-success">
+                 Data para Realização :
+                    @if(task.DueDate == null)
+                    { 
+                        <span>Nenhuma</span>
+                    }
+                    else
+                    {
+                        <span>@task.DueDate</span>
+                    }
+             </div>
+             <p></p>
+             @Html.ActionLink("Deletar", "Delete", "Task", new { Id = @task.Id }, 
+                                   new { onclick="return confirm('Deseja deletar esta tarefa ?')"})
+             | 
+             @Html.ActionLink("Detalhes", "Details", "Task", new { Id = @task.Id }, null)
+             | 
+             @Html.ActionLink("Editar", "Edit", "Task", new { Id = @task.Id }, null) 
+            
+         </div>
+         
+     </div>
+
+ }
+

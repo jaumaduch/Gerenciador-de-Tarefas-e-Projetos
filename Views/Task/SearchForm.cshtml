@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Procurar Tarefas";
+}
+
+<h2 class="text-primary">Procurar Tarefas</h2>
+
+@using(Ajax.BeginForm("Search", new AjaxOptions {  UpdateTargetId = "results"}))
+{
+    <input type="text" name="title" placeholder="Título" />
+    <input type="submit" value="Procurar" />
+    <p></p>
+    <div id="results">
+    </div>
+}
+
+@section Scripts {
+   <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
