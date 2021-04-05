@@ -215,6 +215,7 @@
       <DependentUpon>MyTasks.edmx</DependentUpon>
       <LastGenOutput>MyTasks.cs</LastGenOutput>
     </Content>
+    <Content Include="Data Base\MyTaskDB.bak" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
